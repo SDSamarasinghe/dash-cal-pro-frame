@@ -15,8 +15,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export function TopBar() {
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
   const notifications = [
     { id: 1, title: "New campaign approved", message: "Summer Sale campaign has been approved", time: "2 min ago" },
     { id: 2, title: "Client message", message: "TechCorp sent a new message", time: "1 hour ago" },
@@ -77,7 +81,9 @@ export function TopBar() {
                 <div className="w-8 h-8 bg-wireframe-accent rounded-full flex items-center justify-center">
                   <User className="h-4 w-4 text-wireframe-text" />
                 </div>
-                <span className="hidden md:block text-sm text-wireframe-text">John Doe</span>
+                <span className="hidden md:block text-sm text-wireframe-text">
+                  {user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User'}
+                </span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end">
@@ -87,12 +93,18 @@ export function TopBar() {
                 <User2 className="mr-2 h-4 w-4" />
                 <span>Profile</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-wireframe-accent cursor-pointer">
+              <DropdownMenuItem 
+                onClick={() => navigate('/settings')} 
+                className="hover:bg-wireframe-accent cursor-pointer"
+              >
                 <Settings className="mr-2 h-4 w-4" />
                 <span>Settings</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator className="bg-wireframe-border" />
-              <DropdownMenuItem className="hover:bg-wireframe-accent cursor-pointer text-red-600">
+              <DropdownMenuItem 
+                onClick={signOut} 
+                className="hover:bg-wireframe-accent cursor-pointer text-red-600"
+              >
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Log out</span>
               </DropdownMenuItem>
