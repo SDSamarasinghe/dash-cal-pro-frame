@@ -2,32 +2,48 @@ import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t border-wireframe-border mt-auto">
-      <div className="px-6 py-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-primary rounded flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs">MP</span>
+    <footer className="bg-background border-t border-border mt-auto">
+      <div className="container mx-auto px-6 py-8">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
+          {/* Brand Section */}
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-sm">
+              <span className="text-primary-foreground font-bold text-sm">MP</span>
             </div>
-            <span className="text-sm font-medium text-wireframe-text">MarketingPro</span>
+            <div className="flex flex-col">
+              <span className="text-base font-semibold text-foreground">MarketingPro</span>
+              <span className="text-xs text-muted-foreground">Digital Marketing Solutions</span>
+            </div>
           </div>
           
-          <div className="flex items-center gap-6 text-sm text-wireframe-muted">
-            <a href="/privacy" className="hover:text-wireframe-text transition-colors">
+          {/* Links Section */}
+          <div className="flex flex-wrap items-center justify-center gap-1 text-sm">
+            <a 
+              href="/privacy" 
+              className="px-3 py-1 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
+            >
               Privacy Policy
             </a>
-            <Separator orientation="vertical" className="h-4 bg-wireframe-border" />
-            <a href="/terms" className="hover:text-wireframe-text transition-colors">
+            <Separator orientation="vertical" className="h-4 mx-1" />
+            <a 
+              href="/terms" 
+              className="px-3 py-1 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
+            >
               Terms of Service
             </a>
-            <Separator orientation="vertical" className="h-4 bg-wireframe-border" />
-            <a href="/support" className="hover:text-wireframe-text transition-colors">
+            <Separator orientation="vertical" className="h-4 mx-1" />
+            <a 
+              href="/support" 
+              className="px-3 py-1 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
+            >
               Support
             </a>
           </div>
           
-          <div className="text-sm text-wireframe-muted">
-            © 2024 MarketingPro. All rights reserved.
+          {/* Copyright Section */}
+          <div className="text-sm text-muted-foreground text-center lg:text-right">
+            <p>© 2024 MarketingPro.</p>
+            <p className="text-xs">All rights reserved.</p>
           </div>
         </div>
       </div>
